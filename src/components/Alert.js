@@ -1,6 +1,8 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 
-export default function Alert(props) {
+export default function Alert() {
+  const alert=useSelector((state)=>state.alert.alert)
   const capitalizeFirstLetter=(string)=> {
     if(string==='danger'){
       string='error'
@@ -11,8 +13,8 @@ export default function Alert(props) {
   return (
     <>
     <div style={{height:'100px'}}>
-   { props.alert &&<div className={`alert alert-${props.alert.type} alert-dismissible fade show` }role="alert">
-    <strong>{capitalizeFirstLetter( props.alert.type)}!</strong> {props.alert.msg}.
+   { alert &&<div className={`alert alert-${alert.type} alert-dismissible fade show` }role="alert">
+    <strong>{capitalizeFirstLetter( alert.type)}!</strong> {alert.message}.
   </div>}
   </div>
   </>
